@@ -20,6 +20,12 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface SquareComponent {
+        "onSquareClick": any;
+        "value": string;
+    }
+    interface TttComponent {
+    }
 }
 declare global {
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
@@ -28,8 +34,22 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLSquareComponentElement extends Components.SquareComponent, HTMLStencilElement {
+    }
+    var HTMLSquareComponentElement: {
+        prototype: HTMLSquareComponentElement;
+        new (): HTMLSquareComponentElement;
+    };
+    interface HTMLTttComponentElement extends Components.TttComponent, HTMLStencilElement {
+    }
+    var HTMLTttComponentElement: {
+        prototype: HTMLTttComponentElement;
+        new (): HTMLTttComponentElement;
+    };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
+        "square-component": HTMLSquareComponentElement;
+        "ttt-component": HTMLTttComponentElement;
     }
 }
 declare namespace LocalJSX {
@@ -47,8 +67,16 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface SquareComponent {
+        "onSquareClick"?: any;
+        "value"?: string;
+    }
+    interface TttComponent {
+    }
     interface IntrinsicElements {
         "my-component": MyComponent;
+        "square-component": SquareComponent;
+        "ttt-component": TttComponent;
     }
 }
 export { LocalJSX as JSX };
@@ -56,6 +84,8 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "square-component": LocalJSX.SquareComponent & JSXBase.HTMLAttributes<HTMLSquareComponentElement>;
+            "ttt-component": LocalJSX.TttComponent & JSXBase.HTMLAttributes<HTMLTttComponentElement>;
         }
     }
 }
